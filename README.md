@@ -1,6 +1,6 @@
 # Alpaca Trading PHP SDK
 
-This package acts as the PHP SDK for the [Alpaca API](https://docs.alpaca.markets/).
+This package acts as the PHP SDK for the [Alpaca Trading API](https://docs.alpaca.markets/).
 
 ## Installation
 
@@ -10,7 +10,7 @@ Run `composer require tmarois/alpaca-php-sdk:^1.0`
 
 ## Getting Started
 
-First you need to instantiate the alpaca object.
+First you need to instantiate the `Alpaca` object.
 
 ```php
 use Alpaca\Alpaca;
