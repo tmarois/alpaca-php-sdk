@@ -3,13 +3,6 @@
 class Response
 {
     /**
-     * Alpaca access
-     *
-     * @return Alpaca
-     */
-    private $alpaca;
-
-    /**
      * Guzzle Request
      *
      * @return GuzzleHttp\Psr7\Response
@@ -17,14 +10,21 @@ class Response
     private $request;
 
     /**
+     * Speed of request in seconds
+     *
+     * @return float
+     */
+    private $seconds = 0;
+
+    /**
      * Start the class()
      *
      */
-    public function __construct(Alpaca $alpaca, \GuzzleHttp\Psr7\Response $request)
+    public function __construct(\GuzzleHttp\Psr7\Response $request, $seconds = 0)
     {
-        $this->alpaca = $alpaca;
-
         $this->request = $request;
+
+        $this->seconds = $seconds;
     }
 
     /**
@@ -36,5 +36,16 @@ class Response
     public function contents()
     {
         return json_decode($this->request->getBody()->getContents(),true);
+    }
+
+    /**
+     * seconds()
+     *
+     * get seconds for request
+     *
+     */
+    public function seconds()
+    {
+        return $this->seconds;
     }
 }

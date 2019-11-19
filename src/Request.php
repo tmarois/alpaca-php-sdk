@@ -45,13 +45,25 @@ class Request
         // build and prepare our full path rul
         $url = $this->prepareUrl($handle, $params);
 
+        // lets track how long it takes for this request
+        $seconds = 0;
+
+        // push request
+        $request = $this->client->request($type, $url, [
+            'json' => $params,
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+                'APCA-API-KEY-ID' => $this->alpaca->getAuthKeys()[0] ?? '',
+                'APCA-API-SECRET-KEY' => $this->alpaca->getAuthKeys()[1] ?? ''
+            ],
+            'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$seconds) {
+                $seconds = $stats->getTransferTime(); 
+             }
+        ]);
+
         // send and return the request response
-        return (new Response($this->alpaca, $this->client->request($type, $url, [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-            'APCA-API-KEY-ID' => $this->alpaca->getAuthKeys()[0] ?? '',
-            'APCA-API-SECRET-KEY' => $this->alpaca->getAuthKeys()[1] ?? '',
-        ])));
+        return (new Response($request, $seconds));
     }
 
     /**
