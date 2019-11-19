@@ -38,12 +38,14 @@ class Request
      *
      * Send request
      *
+     * @return Alpaca\Response
      */
     public function send($handle, $params = [], $type = 'GET')
     {
         // build and prepare our full path rul
         $url = $this->prepareUrl($handle, $params);
 
+        // send and return the request response
         return (new Response($this->alpaca, $this->client->request($type, $url, [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
