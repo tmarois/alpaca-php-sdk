@@ -104,6 +104,14 @@ $alpaca = $polygon->orders()->replace('ORDER_ID',[
 ]);
 ```
 
+**[Get Activity](https://docs.alpaca.markets/api-documentation/api-v2/account-activities/)**: Get the account activity, like order filles, dividends etc.
+
+```php
+// type can be many, such as FILL, DIV, TRANS etc
+// view on this page https://docs.alpaca.markets/api-documentation/api-v2/account-activities/
+$alpaca = $polygon->activity()->get('TYPE');
+```
+
 There are more in the [Alpaca Documentation](https://docs.alpaca.markets/) than what is presented above, if you want to extend this, please send in a pull request or request features you'd like to see added. Thanks!
 
 ## Contributions

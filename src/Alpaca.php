@@ -2,8 +2,8 @@
 
 use Alpaca\Request;
 use Alpaca\Account\Account;
-use Alpaca\Account\Order;
 use Alpaca\Account\Orders;
+use Alpaca\Account\Activity;
 
 class Alpaca
 {
@@ -50,7 +50,8 @@ class Alpaca
      */
     private $paths = [
         "account"     => "/v2/account",
-        "activities"  => "/v2/account/activities/{type}",
+        "activity"    => "/v2/account/activities/{type}",
+        "activities"  => "/v2/account/activities",
         "orders"      => "/v2/orders",
         "order"       => "/v2/orders/{id}",
         "positions"   => "/v2/positions",
@@ -63,6 +64,13 @@ class Alpaca
      * @var Alpaca\Account\Orders
      */
     private $orders;
+
+    /**
+     * activity
+     *
+     * @var Alpaca\Account\Activity
+     */
+    private $activity;
 
     /**
      * Set Alpaca 
@@ -157,57 +165,18 @@ class Alpaca
         return ($this->orders = (new Orders($this)));
     }
 
-
-
-
     /**
-     * getOrder()
+     * activity()
      *
-     * @return Alpaca\Account\Order
+     * @return Alpaca\Account\Activity
      */
-    // public function getOrder($id)
-    // {
-    //     return (new Order($this->request('order',['id'=>$id],'GET')->contents()));
-    // }
+    public function activity()
+    {
+        if ($this->activity) {
+            return $this->activity;
+        }
 
-    /**
-     * getOrder()
-     *
-     * @return Alpaca\Account\Order
-     */
-    // public function getOrder($id)
-    // {
-    //     return (new Order($this->request('order',['id'=>$id],'GET')->contents()));
-    // }
-
-    /**
-     * orders()
-     *
-     * @return Alpaca\Account\Orders
-     */
-    // public function orders()
-    // {
-    //     return (new Orders($this->request('orders')->contents()));
-    // }
-
-    /**
-     * cancelOrders()
-     *
-     * @return array
-     */
-    // public function cancelOrder($id)
-    // {
-    //     return $this->request('orders',['id'=>$id,'DELETE')->contents();
-    // }
-
-    /**
-     * cancelOrders()
-     *
-     * @return array
-     */
-    // public function cancelOrders()
-    // {
-    //     return $this->request('orders',[],'DELETE')->contents();
-    // }
+        return ($this->activity = (new Activity($this)));
+    }
 
 }
