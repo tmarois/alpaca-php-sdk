@@ -104,7 +104,7 @@ $alpaca = $polygon->orders()->replace('ORDER_ID',[
 ]);
 ```
 
-**[Get Activity](https://docs.alpaca.markets/api-documentation/api-v2/account-activities/)**: Get the account activity, like order filles, dividends etc.
+**[Get Activity](https://docs.alpaca.markets/api-documentation/api-v2/account-activities/)**: Get the account activity, like order fills, dividends etc.
 
 ```php
 // type can be many, such as FILL, DIV, TRANS etc
