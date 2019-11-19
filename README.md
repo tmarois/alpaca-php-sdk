@@ -35,7 +35,12 @@ $alpaca = $polygon->orders()->get('ORDER_ID');
 **[Get All Orders](https://docs.alpaca.markets/api-documentation/api-v2/orders/#order-entity)**: Get an array of all open orders
 
 ```php
+// get all open orders
 $alpaca = $polygon->orders()->getAll();
+
+// get orders of specific types
+// type: open, closed, or all
+$alpaca = $polygon->orders()->getAll($type,$limit,$dateFrom,$dateTo,$direction);
 ```
 
 **[Cancel An Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#cancel-all-orders)**: Cancel a specific order

@@ -54,9 +54,15 @@ class Orders
      *
      * @return array
      */
-    public function getAll()
+    public function getAll($status = 'open', $limit = 50, $from = null, $to = null, $dir = 'desc')
     {
-        return $this->alpaca->request('orders')->contents();
+        return $this->alpaca->request('orders',[
+            'status' => $status,
+            'limit' => $limit,
+            'after' => $from,
+            'until' => $to,
+            'direction' => $dir
+        ])->contents();
     }
 
     /**
