@@ -40,6 +40,16 @@ class Orders
     }
 
     /**
+     * replace()
+     *
+     * @return array
+     */
+    public function replace($id, $options = [])
+    {
+        return $this->alpaca->request('order',array_merge(['id'=>$id],$options),'PATCH')->contents();
+    }
+
+    /**
      * getAll()
      *
      * @return array

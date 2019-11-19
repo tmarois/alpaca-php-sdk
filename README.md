@@ -20,31 +20,31 @@ $alpaca = new Alpaca("YOUR_API_KEY_ID", "YOUR_API_SECRET_KEY");
 
 ## Example Usage
 
-**[Get Account](https://docs.alpaca.markets/api-documentation/api-v2/account/)**: Get the account details.
+**[Get Account](https://docs.alpaca.markets/api-documentation/api-v2/account/)**: Get the account details
 
 ```php
 $alpaca = $polygon->account();
 ```
 
-**[Get Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#order-entity)**: Get a specific order.
+**[Get Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#order-entity)**: Get a specific order
 
 ```php
 $alpaca = $polygon->orders()->get('ORDER_ID');
 ```
 
-**[Get All Orders](https://docs.alpaca.markets/api-documentation/api-v2/orders/#order-entity)**: Get an array of all open orders.
+**[Get All Orders](https://docs.alpaca.markets/api-documentation/api-v2/orders/#order-entity)**: Get an array of all open orders
 
 ```php
 $alpaca = $polygon->orders()->getAll();
 ```
 
-**[Cancel An Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#cancel-all-orders)**: Cancel a specific order.
+**[Cancel An Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#cancel-all-orders)**: Cancel a specific order
 
 ```php
 $alpaca = $polygon->orders()->cancel('ORDER_ID);
 ```
 
-**[Cancel All Orders](https://docs.alpaca.markets/api-documentation/api-v2/orders/#cancel-all-orders)**: Cancel all open orders.
+**[Cancel All Orders](https://docs.alpaca.markets/api-documentation/api-v2/orders/#cancel-all-orders)**: Cancel all open orders
 
 ```php
 $alpaca = $polygon->orders()->cancelAll();
@@ -56,20 +56,49 @@ $alpaca = $polygon->orders()->cancelAll();
 $alpaca = $polygon->orders()->create([
     // stock to purchase
     'symbol' => 'AAPL',
+
     // how many shares
     'qty' => 1,
+
     // buy or sell
     'side' => 'buy',
+
     // market, limit, stop, or stop_limit
     'type' => 'market',
+
     // day, gtc, opg, cls, ioc, fok.
     // @see https://docs.alpaca.markets/orders/#time-in-force
     'time_in_force' => 'day',
+
     // required if type is limit or stop_limit
     // 'limit_price' => 0,
+
     // required if type is stop or stop_limit
     // 'stop_price' => 0,
+
     'extended_hours' => false,
+
+    // optional if adding custom id
+    // 'client_order_id' => ''
+]);
+```
+
+**[Replace An Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#replace-an-order)**: Replaces an existing order
+
+```php
+$alpaca = $polygon->orders()->replace('ORDER_ID',[
+    'qty' => 1,
+
+    // required if type is limit or stop_limit
+    // 'limit_price' => 0,
+
+    // required if type is stop or stop_limit
+    // 'stop_price' => 0,
+
+    // day, gtc, opg, cls, ioc, fok.
+    // @see https://docs.alpaca.markets/orders/#time-in-force
+    'time_in_force' => 'day',
+
     // optional if adding custom id
     // 'client_order_id' => ''
 ]);
