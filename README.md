@@ -52,24 +52,26 @@ $alpaca = $polygon->orders()->cancelAll();
 
 **[Create An Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#request-a-new-order)**: Create a new order
 
-Also, see [Time In Force](https://docs.alpaca.markets/orders/#time-in-force)
-
 ```php
 $alpaca = $polygon->orders()->create([
-    'symbol' => '',
-    'qty' => 0,
+    // stock to purchase
+    'symbol' => 'AAPL',
+    // how many shares
+    'qty' => 1,
     // buy or sell
-    'side' => '',
+    'side' => 'buy',
     // market, limit, stop, or stop_limit
-    'type' => '',
+    'type' => 'market',
     // day, gtc, opg, cls, ioc, fok.
-    'time_in_force' => '',
+    // @see https://docs.alpaca.markets/orders/#time-in-force
+    'time_in_force' => 'day',
     // required if type is limit or stop_limit
-    'limit_price' => '',
+    // 'limit_price' => 0,
     // required if type is stop or stop_limit
-    'stop_price' => '',
+    // 'stop_price' => 0,
     'extended_hours' => false,
-    'client_order_id' => ''
+    // optional if adding custom id
+    // 'client_order_id' => ''
 ]);
 ```
 
