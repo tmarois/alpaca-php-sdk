@@ -48,4 +48,18 @@ class Response
     {
         return $this->seconds;
     }
+
+    /**
+     * results()
+     *
+     * get the results and time of response
+     *
+     */
+    public function results()
+    {
+        return [
+            'response' => $this->contents(),
+            'seconds' => $this->seconds()
+        ];
+    }
 }

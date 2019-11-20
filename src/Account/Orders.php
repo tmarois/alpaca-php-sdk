@@ -26,7 +26,7 @@ class Orders
      */
     public function get($id)
     {
-        return $this->alpaca->request('order',['id'=>$id],'GET')->contents();
+        return $this->alpaca->request('order',['id'=>$id],'GET')->results();
     }
 
     /**
@@ -36,7 +36,7 @@ class Orders
      */
     public function create($options = [])
     {
-        return $this->alpaca->request('orders',$options,'POST')->contents();
+        return $this->alpaca->request('orders',$options,'POST')->results();
     }
 
     /**
@@ -46,7 +46,7 @@ class Orders
      */
     public function replace($id, $options = [])
     {
-        return $this->alpaca->request('order',array_merge(['id'=>$id],$options),'PATCH')->contents();
+        return $this->alpaca->request('order',array_merge(['id'=>$id],$options),'PATCH')->results();
     }
 
     /**
@@ -62,7 +62,7 @@ class Orders
             'after' => $from,
             'until' => $to,
             'direction' => $dir
-        ])->contents();
+        ])->results();
     }
 
     /**
@@ -72,7 +72,7 @@ class Orders
      */
     public function cancel($id)
     {
-        return $this->alpaca->request('order',['id'=>$id],'DELETE')->contents();
+        return $this->alpaca->request('order',['id'=>$id],'DELETE')->results();
     }
 
     /**
@@ -82,6 +82,6 @@ class Orders
      */
     public function cancelAll()
     {
-        return $this->alpaca->request('orders',[],'DELETE')->contents();
+        return $this->alpaca->request('orders',[],'DELETE')->results();
     }
 }

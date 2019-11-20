@@ -26,7 +26,7 @@ class Activity
      */
     public function get($type, $options=[])
     {
-        return $this->alpaca->request('activity',array_merge(['type'=>$type],$options))->contents();
+        return $this->alpaca->request('activity',array_merge(['type'=>$type],$options))->results();
     }
 
     /**
