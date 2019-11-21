@@ -23,42 +23,42 @@ $alpaca = new Alpaca("YOUR_API_KEY_ID", "YOUR_API_SECRET_KEY");
 **[Get Account](https://docs.alpaca.markets/api-documentation/api-v2/account/)**: Get the account details
 
 ```php
-$alpaca = $polygon->account();
+$account = $alpaca->account();
 ```
 
 **[Get Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#order-entity)**: Get a specific order
 
 ```php
-$alpaca = $polygon->orders()->get('ORDER_ID');
+$order = $alpaca->orders()->get('ORDER_ID');
 ```
 
 **[Get All Orders](https://docs.alpaca.markets/api-documentation/api-v2/orders/#order-entity)**: Get an array of all open orders
 
 ```php
 // get all open orders
-$alpaca = $polygon->orders()->getAll();
+$orders = $alpaca->orders()->getAll();
 
 // get orders of specific types
 // type: open, closed, or all
-$alpaca = $polygon->orders()->getAll($type,$limit,$dateFrom,$dateTo,$direction);
+$orders = $alpaca->orders()->getAll($type,$limit,$dateFrom,$dateTo,$direction);
 ```
 
 **[Cancel An Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#cancel-all-orders)**: Cancel a specific order
 
 ```php
-$alpaca = $polygon->orders()->cancel('ORDER_ID);
+$orders = $alpaca->orders()->cancel('ORDER_ID);
 ```
 
 **[Cancel All Orders](https://docs.alpaca.markets/api-documentation/api-v2/orders/#cancel-all-orders)**: Cancel all open orders
 
 ```php
-$alpaca = $polygon->orders()->cancelAll();
+$orders = $alpaca->orders()->cancelAll();
 ```
 
 **[Create An Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#request-a-new-order)**: Create a new order
 
 ```php
-$alpaca = $polygon->orders()->create([
+$alpaca->orders()->create([
     // stock to purchase
     'symbol' => 'AAPL',
 
@@ -91,7 +91,7 @@ $alpaca = $polygon->orders()->create([
 **[Replace An Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#replace-an-order)**: Replaces an existing order
 
 ```php
-$alpaca = $polygon->orders()->replace('ORDER_ID',[
+$alpaca->orders()->replace('ORDER_ID',[
     'qty' => 1,
 
     // required if type is limit or stop_limit
@@ -114,7 +114,7 @@ $alpaca = $polygon->orders()->replace('ORDER_ID',[
 ```php
 // type can be many, such as FILL, DIV, TRANS etc
 // view on this page https://docs.alpaca.markets/api-documentation/api-v2/account-activities/
-$alpaca = $polygon->activity()->get('TYPE');
+$activity = $alpaca->activity()->get('TYPE');
 ```
 
 There are more in the [Alpaca Documentation](https://docs.alpaca.markets/) than what is presented above, if you want to extend this, please send in a pull request or request features you'd like to see added. Thanks!
