@@ -2,6 +2,8 @@
 
 This package acts as the PHP SDK for the [Alpaca Trading API](https://docs.alpaca.markets/).
 
+Also, check out the [Polygon PHP SDK](https://github.com/tmarois/polygon-php-sdk) for real time data.
+
 ## Installation
 
 Use [Composer](http://getcomposer.org/) to install package.
