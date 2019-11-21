@@ -23,7 +23,22 @@ $alpaca = new Alpaca("YOUR_API_KEY_ID", "YOUR_API_SECRET_KEY");
 **[Get Account](https://docs.alpaca.markets/api-documentation/api-v2/account/)**: Get the account details
 
 ```php
+// this will pull a request from alpaca to get account details
 $account = $alpaca->account();
+
+// here are some helper methods to quickly get the details
+$number = $account->number();
+$id = $account->id();
+$status = $account->status();
+$buyingPower = $account->buyingPower();
+$cash = $account->cash();
+$longValue = $account->longValue();
+$shortValue = $account->shortValue();
+$portfolioValue = $account->portfolioValue();
+
+// gets the raw array from Alpaca
+// view documentation for the correct keys
+$raw = $account->raw();
 ```
 
 **[Get Order](https://docs.alpaca.markets/api-documentation/api-v2/orders/#order-entity)**: Get a specific order
