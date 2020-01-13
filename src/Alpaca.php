@@ -66,6 +66,13 @@ class Alpaca
     private $orders;
 
     /**
+     * positions
+     *
+     * @var Alpaca\Account\Positions
+     */
+    private $positions;
+
+    /**
      * activity
      *
      * @var Alpaca\Account\Activity
@@ -163,6 +170,20 @@ class Alpaca
         }
 
         return ($this->orders = (new Orders($this)));
+    }
+
+    /**
+     * positions()
+     *
+     * @return Alpaca\Account\Positions
+     */
+    public function positions()
+    {
+        if ($this->positions) {
+            return $this->positions;
+        }
+
+        return ($this->positions = (new Positions($this)));
     }
 
     /**

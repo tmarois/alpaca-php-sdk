@@ -126,6 +126,54 @@ $alpaca->orders()->replace('ORDER_ID',[
 ]);
 ```
 
+**[Get Position](https://docs.alpaca.markets/api-documentation/api-v2/orders/#get-open-positions)**: Get an open position
+
+```php
+$position = $alpaca->positions()->get('SYMBOL');
+```
+
+**[Get All Positions](https://docs.alpaca.markets/api-documentation/api-v2/orders/#get-an-open-position)**: Get all open positions
+
+```php
+$positions = $alpaca->positions()->getAll();
+```
+
+**Position Entity Response:**
+
+```json
+{
+  "asset_id": "904837e3-3b76-47ec-b432-046db621571b",
+  "symbol": "AAPL",
+  "exchange": "NASDAQ",
+  "asset_class": "us_equity",
+  "avg_entry_price": "100.0",
+  "qty": "5",
+  "side": "long",
+  "market_value": "600.0",
+  "cost_basis": "500.0",
+  "unrealized_pl": "100.0",
+  "unrealized_plpc": "0.20",
+  "unrealized_intraday_pl": "10.0",
+  "unrealized_intraday_plpc": "0.0084",
+  "current_price": "120.0",
+  "lastday_price": "119.0",
+  "change_today": "0.0084"
+}
+```
+
+**[Close a Position](https://docs.alpaca.markets/api-documentation/api-v2/orders/#close-a-position)**: Close a position
+
+```php
+$alpaca->positions()->close('SYMBOL');
+```
+
+**[Close All Positions](https://docs.alpaca.markets/api-documentation/api-v2/orders/#close-a-position)**: Close all open positions
+
+```php
+$alpaca->positions()->closeAll();
+```
+
+
 **[Get Activity](https://docs.alpaca.markets/api-documentation/api-v2/account-activities/)**: Get the account activity, like order fills, dividends etc.
 
 ```php
