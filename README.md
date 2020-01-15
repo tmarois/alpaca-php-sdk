@@ -1,6 +1,6 @@
 # Alpaca Trading PHP SDK
 
-This package acts as the PHP SDK for the [Alpaca Trading API](https://docs.alpaca.markets/).
+This package acts as a PHP SDK for the [Alpaca Trading API](https://docs.alpaca.markets/).
 
 Also, check out the [Polygon PHP SDK](https://github.com/tmarois/polygon-php-sdk) for real time data.
 
@@ -192,5 +192,5 @@ Anyone can contribute to **alpaca-php-sdk**. Please do so by posting issues when
 
 **alpaca-php-sdk** (This Repository) is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-This SDK has no affiliation with alpaca.markets, Alpaca Securities LLC and AlpacaDB and acts as an unofficial SDK designed to be a simple solution with using PHP applications. Use at your own risk. If you have any issues with the SDK please submit an issue or pull request.
+This SDK has no affiliation with alpaca.markets, Alpaca Securities LLC and AlpacaDB and acts as an unofficial SDK designed to be a simple solution with using PHP applications. **Use at your own risk**. If you have any issues with the SDK please submit an issue or pull request.
  
