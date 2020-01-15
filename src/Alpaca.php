@@ -50,12 +50,12 @@ class Alpaca
      */
     private $paths = [
         "account"     => "/v2/account",
-        "activity"    => "/v2/account/activities/{type}",
-        "activities"  => "/v2/account/activities",
         "orders"      => "/v2/orders",
         "order"       => "/v2/orders/{id}",
         "positions"   => "/v2/positions",
-        "position"    => "/v2/positions/{stock}"
+        "position"    => "/v2/positions/{stock}",
+        "activity"    => "/v2/account/activities/{type}",
+        "activities"  => "/v2/account/activities"
     ];
     
     /**

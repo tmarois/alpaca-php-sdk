@@ -6,9 +6,9 @@ use Alpaca\Response;
 class Request
 {
     /**
-     * Polygon access
+     * Alpaca
      *
-     * @return Polygon
+     * @return Alpaca
      */
     private $alpaca;
 
