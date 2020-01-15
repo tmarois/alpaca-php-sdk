@@ -109,8 +109,7 @@ class Alpaca
      *
      * @return array
      */
-    public function getAuthKeys()
-    {
+    public function getAuthKeys() {
         return [$this->key, $this->secret];
     }
 
@@ -133,8 +132,7 @@ class Alpaca
      *
      * @return string
      */
-    public function getPath($handle)
-    {
+    public function getPath($handle) {
         return $this->paths[$handle] ?? false;
     }
     
@@ -143,8 +141,7 @@ class Alpaca
      *
      * @return Alpaca\Request
      */
-    public function request($handle, $params = [], $type = 'GET')
-    {
+    public function request($handle, $params = [], $type = 'GET') {
         return (new Request($this))->send($handle, $params, $type);
     }
 
@@ -153,8 +150,7 @@ class Alpaca
      *
      * @return Alpaca\Account\Account
      */
-    public function account()
-    {
+    public function account() {
         return (new Account($this->request('account')->contents()));
     }
 

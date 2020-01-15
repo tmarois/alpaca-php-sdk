@@ -14,8 +14,7 @@ class Activity
      *  __construct 
      *
      */
-    public function __construct(\Alpaca\Alpaca $alpaca)
-    {
+    public function __construct(\Alpaca\Alpaca $alpaca) {
         $this->alpaca = $alpaca;
     }
 
@@ -24,8 +23,7 @@ class Activity
      *
      * @return array
      */
-    public function get($type, $options=[])
-    {
+    public function get($type, $options=[]) {
         return $this->alpaca->request('activity',array_merge(['type'=>$type],$options))->results();
     }
 
@@ -34,8 +32,7 @@ class Activity
      *
      * @return array
      */
-    public function getFilledOrders($from, $to, $options = [])
-    {
+    public function getFilledOrders($from, $to, $options = []) {
         return $this->get('FILL',array_merge(['after'=>$from,'until'=>$to],$options));
     }
 }

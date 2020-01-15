@@ -14,8 +14,7 @@ class Account
      *  __construct 
      *
      */
-    public function __construct($raw = [])
-    {
+    public function __construct($raw = []) {
         $this->raw = $raw;
     }
 
@@ -24,8 +23,7 @@ class Account
      *
      * @return mixed
      */
-    public function number()
-    {
+    public function number() {
         return $this->raw['account_number'] ?? 'unknown';
     }
 
@@ -34,8 +32,7 @@ class Account
      *
      * @return mixed
      */
-    public function id()
-    {
+    public function id() {
         return $this->raw['id'] ?? 'unknown';
     }
 
@@ -44,8 +41,7 @@ class Account
      *
      * @return float
      */
-    public function cash()
-    {
+    public function cash() {
         return (float) $this->raw['cash'] ?? 0;
     }
 
@@ -54,8 +50,7 @@ class Account
      *
      * @return float
      */
-    public function buyingPower()
-    {
+    public function buyingPower() {
         return (float) $this->raw['buying_power'] ?? 0;
     }
 
@@ -64,8 +59,7 @@ class Account
      *
      * @return float
      */
-    public function longValue()
-    {
+    public function longValue() {
         return (float) $this->raw['long_market_value'] ?? 0;
     }
 
@@ -74,8 +68,7 @@ class Account
      *
      * @return float
      */
-    public function shortValue()
-    {
+    public function shortValue() {
         return (float) $this->raw['short_market_value'] ?? 0;
     }
 
@@ -84,8 +77,7 @@ class Account
      *
      * @return float
      */
-    public function portfolioValue()
-    {
+    public function portfolioValue() {
         return (float) $this->raw['portfolio_value'] ?? 0;
     }
 
@@ -94,8 +86,7 @@ class Account
      *
      * @return string
      */
-    public function status()
-    {
+    public function status() {
         return $this->raw['status'] ?? 'UNKNOWN';
     }
 
@@ -104,8 +95,7 @@ class Account
      *
      * @return array
      */
-    public function raw()
-    {
+    public function raw() {
         return $this->raw;
     }
 

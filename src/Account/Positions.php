@@ -14,8 +14,7 @@ class Positions
      *  __construct 
      *
      */
-    public function __construct(\Alpaca\Alpaca $alpaca)
-    {
+    public function __construct(\Alpaca\Alpaca $alpaca) {
         $this->alpaca = $alpaca;
     }
 
@@ -24,8 +23,7 @@ class Positions
      *
      * @return array
      */
-    public function get($stock)
-    {
+    public function get($stock) {
         return $this->alpaca->request('position',['stock'=>$stock])->results();
     }
 
@@ -34,8 +32,7 @@ class Positions
      *
      * @return array
      */
-    public function getAll()
-    {
+    public function getAll() {
         return $this->alpaca->request('positions',[])->results();
     }
 
@@ -44,8 +41,7 @@ class Positions
      *
      * @return array
      */
-    public function close($stock)
-    {
+    public function close($stock) {
         return $this->alpaca->request('position',['stock'=>$stock],'DELETE')->results();
     }
 
@@ -54,8 +50,7 @@ class Positions
      *
      * @return array
      */
-    public function closeAll()
-    {
+    public function closeAll() {
         return $this->alpaca->request('positions',[],'DELETE')->results();
     }
 }

@@ -14,8 +14,7 @@ class Orders
      *  __construct 
      *
      */
-    public function __construct(\Alpaca\Alpaca $alpaca)
-    {
+    public function __construct(\Alpaca\Alpaca $alpaca) {
         $this->alpaca = $alpaca;
     }
 
@@ -24,8 +23,7 @@ class Orders
      *
      * @return array
      */
-    public function get($id)
-    {
+    public function get($id) {
         return $this->alpaca->request('order',['id'=>$id],'GET')->results();
     }
 
@@ -34,8 +32,7 @@ class Orders
      *
      * @return array
      */
-    public function create($options = [])
-    {
+    public function create($options = []) {
         return $this->alpaca->request('orders',$options,'POST')->results();
     }
 
@@ -44,8 +41,7 @@ class Orders
      *
      * @return array
      */
-    public function replace($id, $options = [])
-    {
+    public function replace($id, $options = []) {
         return $this->alpaca->request('order',array_merge(['id'=>$id],$options),'PATCH')->results();
     }
 
@@ -70,8 +66,7 @@ class Orders
      *
      * @return array
      */
-    public function cancel($id)
-    {
+    public function cancel($id) {
         return $this->alpaca->request('order',['id'=>$id],'DELETE')->results();
     }
 
@@ -80,8 +75,7 @@ class Orders
      *
      * @return array
      */
-    public function cancelAll()
-    {
+    public function cancelAll() {
         return $this->alpaca->request('orders',[],'DELETE')->results();
     }
 }
