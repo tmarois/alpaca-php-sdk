@@ -1,5 +1,7 @@
 <?php namespace Alpaca\Account;
 
+use Alpaca\Alpaca;
+
 class Positions
 {
 
@@ -8,14 +10,14 @@ class Positions
      *
      * @var Alpaca\Alpaca
      */
-    private $alpaca;
+    private $alp;
 
     /**
      *  __construct 
      *
      */
-    public function __construct(\Alpaca\Alpaca $alpaca) {
-        $this->alpaca = $alpaca;
+    public function __construct(Alpaca $alp) {
+        $this->alp = $alp;
     }
 
     /**
@@ -24,7 +26,7 @@ class Positions
      * @return array
      */
     public function get($stock) {
-        return $this->alpaca->request('position',['stock'=>$stock])->results();
+        return $this->alp->request('position',['stock'=>$stock])->results();
     }
 
     /**
@@ -33,7 +35,7 @@ class Positions
      * @return array
      */
     public function getAll() {
-        return $this->alpaca->request('positions',[])->results();
+        return $this->alp->request('positions',[])->results();
     }
 
     /**
@@ -42,7 +44,7 @@ class Positions
      * @return array
      */
     public function close($stock) {
-        return $this->alpaca->request('position',['stock'=>$stock],'DELETE')->results();
+        return $this->alp->request('position',['stock'=>$stock],'DELETE')->results();
     }
 
     /**
@@ -51,6 +53,6 @@ class Positions
      * @return array
      */
     public function closeAll() {
-        return $this->alpaca->request('positions',[],'DELETE')->results();
+        return $this->alp->request('positions',[],'DELETE')->results();
     }
 }

@@ -1,5 +1,7 @@
 <?php namespace Alpaca\Account;
 
+use Alpaca\Alpaca;
+
 class Orders
 {
 
@@ -8,14 +10,14 @@ class Orders
      *
      * @var Alpaca\Alpaca
      */
-    private $alpaca;
+    private $alp;
 
     /**
      *  __construct 
      *
      */
-    public function __construct(\Alpaca\Alpaca $alpaca) {
-        $this->alpaca = $alpaca;
+    public function __construct(Alpaca $alp) {
+        $this->alp = $alp;
     }
 
     /**
@@ -24,7 +26,7 @@ class Orders
      * @return array
      */
     public function get($id) {
-        return $this->alpaca->request('order',['id'=>$id],'GET')->results();
+        return $this->alp->request('order',['id'=>$id],'GET')->results();
     }
 
     /**
@@ -33,7 +35,7 @@ class Orders
      * @return array
      */
     public function create($options = []) {
-        return $this->alpaca->request('orders',$options,'POST')->results();
+        return $this->alp->request('orders',$options,'POST')->results();
     }
 
     /**
@@ -42,7 +44,7 @@ class Orders
      * @return array
      */
     public function replace($id, $options = []) {
-        return $this->alpaca->request('order',array_merge(['id'=>$id],$options),'PATCH')->results();
+        return $this->alp->request('order',array_merge(['id'=>$id],$options),'PATCH')->results();
     }
 
     /**
@@ -52,7 +54,7 @@ class Orders
      */
     public function getAll($status = 'open', $limit = 50, $from = null, $to = null, $dir = 'desc')
     {
-        return $this->alpaca->request('orders',[
+        return $this->alp->request('orders',[
             'status' => $status,
             'limit' => $limit,
             'after' => $from,
@@ -67,7 +69,7 @@ class Orders
      * @return array
      */
     public function cancel($id) {
-        return $this->alpaca->request('order',['id'=>$id],'DELETE')->results();
+        return $this->alp->request('order',['id'=>$id],'DELETE')->results();
     }
 
     /**
@@ -76,6 +78,6 @@ class Orders
      * @return array
      */
     public function cancelAll() {
-        return $this->alpaca->request('orders',[],'DELETE')->results();
+        return $this->alp->request('orders',[],'DELETE')->results();
     }
 }

@@ -1,5 +1,7 @@
 <?php namespace Alpaca;
 
+use GuzzleHttp\Psr7\Response as GuzzleResponse;
+
 class Response
 {
     /**
@@ -20,11 +22,11 @@ class Response
      * Start the class()
      *
      */
-    public function __construct(\GuzzleHttp\Psr7\Response $request, $seconds = 0)
+    public function __construct(GuzzleResponse $request, $seconds = 0)
     {
         $this->request = $request;
-
         $this->seconds = $seconds;
+        $this->body    = json_decode($this->request->getBody()->getContents(),true);
     }
 
     /**
@@ -34,7 +36,7 @@ class Response
      *
      */
     public function contents() {
-        return json_decode($this->request->getBody()->getContents(),true);
+        return $this->body;
     }
 
     /**

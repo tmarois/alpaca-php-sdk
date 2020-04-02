@@ -1,7 +1,9 @@
 <?php namespace Alpaca;
 
 use GuzzleHttp\Client;
+
 use Alpaca\Response;
+use Alpaca\Alpaca;
 
 class Request
 {
@@ -10,7 +12,7 @@ class Request
      *
      * @return Alpaca
      */
-    private $alpaca;
+    private $alp;
 
     /**
      * Guzzle Client
@@ -23,12 +25,12 @@ class Request
      * Start the class()
      *
      */
-    public function __construct(Alpaca $alpaca, $timeout = 4)
+    public function __construct(Alpaca $alp, $timeout = 4)
     {
-        $this->alpaca = $alpaca;
+        $this->alp = $alp;
 
         $this->client = new Client([
-            'base_uri' => $this->alpaca->getRoot(),
+            'base_uri' => $this->alp->getRoot(),
             'timeout'  => $timeout
         ]);
     }
@@ -54,8 +56,8 @@ class Request
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'APCA-API-KEY-ID' => $this->alpaca->getAuthKeys()[0] ?? '',
-                'APCA-API-SECRET-KEY' => $this->alpaca->getAuthKeys()[1] ?? ''
+                'APCA-API-KEY-ID' => $this->alp->getAuthKeys()[0] ?? '',
+                'APCA-API-SECRET-KEY' => $this->alp->getAuthKeys()[1] ?? ''
             ],
             'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$seconds) {
                 $seconds = $stats->getTransferTime(); 
@@ -75,7 +77,7 @@ class Request
      */
     private function prepareUrl($handle, $segments = [])
     {
-        $url = $this->alpaca->getPath($handle);
+        $url = $this->alp->getPath($handle);
 
         foreach($segments as $segment=>$value) {
             $url = str_replace('{'.$segment.'}', $value, $url);
